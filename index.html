@@ -1,0 +1,1214 @@
+<html lang="en"><head>
+
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> <!-- or black-translucent -->
+<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ideatr - Build and grow apps at the speed of thought</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script><style>
+.invisible { visibility: hidden !important; }
+</style><style>
+.invisible { visibility: hidden !important; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; }
+.font-novecento-wide-bold {
+  font-family: 'Novecento Sans Wide Bold', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+/* Custom scrollbar to match premium feel */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background-color: #e5e7eb; border-radius: 20px; }
+</style>
+<script>
+// Configure Tailwind to include our custom 3D transform utilities
+tailwind.config = {
+theme: {
+extend: {
+// Add any custom theme extensions here if needed
+}
+},
+plugins: [
+function({ addUtilities }) {
+const rotateXUtilities = {};
+const rotateYUtilities = {};
+const rotateZUtilities = {};
+const rotateValues = [0, 5, 10, 15, 20, 30, 45, 75];
+// Generate rotate-x utilities
+rotateValues.forEach((value) => {
+rotateXUtilities[`.rotate-x-${value}`] = {
+'--tw-rotate-x': `${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+if (value !== 0) {
+rotateXUtilities[`.-rotate-x-${value}`] = {
+'--tw-rotate-x': `-${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+}
+});
+// Generate rotate-y utilities
+rotateValues.forEach((value) => {
+rotateYUtilities[`.rotate-y-${value}`] = {
+'--tw-rotate-y': `${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+if (value !== 0) {
+rotateYUtilities[`.-rotate-y-${value}`] = {
+'--tw-rotate-y': `-${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+}
+});
+// Generate rotate-z utilities
+rotateValues.forEach((value) => {
+rotateZUtilities[`.rotate-z-${value}`] = {
+'--tw-rotate-z': `${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+if (value !== 0) {
+rotateZUtilities[`.-rotate-z-${value}`] = {
+'--tw-rotate-z': `-${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+}
+});
+// Perspective utilities
+const perspectiveUtilities = {
+".perspective-none": { perspective: "none" },
+".perspective-dramatic": { perspective: "100px" },
+".perspective-near": { perspective: "300px" },
+".perspective-normal": { perspective: "500px" },
+".perspective-midrange": { perspective: "800px" },
+".perspective-distant": { perspective: "1200px" },
+};
+// Transform style utilities
+const transformStyleUtilities = {
+".transform-style-preserve-3d": { "transform-style": "preserve-3d" },
+".transform-style-flat": { "transform-style": "flat" },
+};
+addUtilities({
+...rotateXUtilities,
+...rotateYUtilities,
+...rotateZUtilities,
+...perspectiveUtilities,
+...transformStyleUtilities,
+});
+}
+]
+};
+</script>
+<meta name="disabled-font-classes" content="font-geist,font-roboto,font-montserrat,font-poppins,font-playfair,font-merriweather,font-manrope,font-space-grotesk,font-work-sans,font-pt-serif,font-geist-mono,font-space-mono,font-quicksand,font-nunito,font-newsreader,font-google-sans-flex,font-oswald,font-jakarta">
+<style id="aura-editor-visibility-style">
+.invisible { visibility: hidden !important; }
+</style>
+<link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style>  <style>
+/* 3D Transform utilities */
+.perspective-none { perspective: none !important; }
+.perspective-dramatic { perspective: 100px !important; }
+.perspective-near { perspective: 300px !important; }
+.perspective-normal { perspective: 500px !important; }
+.perspective-midrange { perspective: 800px !important; }
+.perspective-distant { perspective: 1200px !important; }
+.transform-style-preserve-3d { transform-style: preserve-3d !important; }
+.transform-style-flat { transform-style: flat !important; }
+</style></head>
+<body class="antialiased overflow-x-hidden text-slate-900 bg-[#F9F8F6]">
+
+    <!-- Navigation -->
+    <nav class="bg-[#000000] w-full border-transparent border-b mb-0">
+    <div class="flex max-w-7xl mr-auto ml-auto pt-5 pr-6 pb-5 pl-6 items-center justify-between">
+      <!-- Logo -->
+      <div class="flex h-10 cursor-pointer gap-x-2 items-center">
+        <div class="w-10 h-10 flex items-center justify-center overflow-visible shrink-0">
+          <img src="/image-cropped.svg" alt="SOFTRIKA logo" class="w-full h-full object-contain">
+        </div>
+        <div class="font-novecento-wide-bold text-sm sm:text-base text-stone-50 leading-none">
+          SOFTRIKA
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="hidden md:flex gap-8 gap-x-8 gap-y-8 items-center">
+  <a href="#services" class="transition-colors text-base font-medium text-slate-500 tracking-tight font-dm-sans hover:text-slate-50" style="">Ürünlerimiz</a>
+  <a href="#services-accordion" class="transition-colors text-base font-medium text-slate-500 tracking-tight font-dm-sans hover:text-slate-50" style="">Hizmetler</a>
+  <a href="#process" class="transition-colors text-base font-medium text-slate-500 tracking-tight font-dm-sans hover:text-slate-50" style="">Süreç</a>
+  <a href="#" class="transition-colors text-base font-medium text-slate-500 tracking-tight font-dm-sans hover:text-slate-50" style="">SSS</a>
+</div>
+
+      <!-- Actions -->
+      <div class="flex gap-4 items-center">
+        <a href="#" class="hover:bg-[#033476] transition-colors text-sm font-medium text-white tracking-tight font-dm-sans bg-[#004BB0] rounded-md pt-2.5 pr-5 pb-2.5 pl-5 shadow-sm">Projenizi Konuşalım</a>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Main Hero Section -->
+    <main class="bg-center lg:pt-48 lg:pb-48 w-full max-w-none mr-auto ml-auto pt-0 pr-6 pb-32 pl-6 relative">
+  <div class="absolute top-0 right-0 bottom-0 left-0" data-container-bg="true">
+  </div>
+  <div class="grid lg:grid-cols-2 max-w-7xl mr-auto ml-auto items-center">
+
+    <!-- Left Column: Copy & Form -->
+    <div class="max-w-xl z-10">
+      <p class="uppercase text-xs font-semibold tracking-tight font-dm-sans mb-6 text-stone-300">UÇTAN UCA YAZILIM</p>
+      <h1 class="sm:text-7xl text-6xl text-stone-50 tracking-tight font-novecento-wide-bold mb-8">
+  <span class="block">İşinizi Geleceğe</span>
+  <span class="block">Taşıyan Yazılım</span>
+  <span class="block">Çözümleri</span>
+</h1>
+      <p class="leading-relaxed text-lg tracking-tight font-dm-sans max-w-lg mb-10 text-stone-50">
+        Softrika olarak, şirketinize özel web, mobil ve bulut tabanlı yazılımlar geliştiriyor; tüm süreci baştan uca sahiplenip sizlere teslim ediyoruz. Ayrıca hazır ürünlerimizle iş süreçlerinizi dijitalleştiriyoruz.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 items-center justify-start">
+  <style class="">
+    @keyframes floating-points {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+    }
+  </style>
+  <div class="inline-block">
+    <a href="#services" class="group hover:scale-95 transition-transform" style="cursor: pointer; position: relative; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(139, 202, 253, 0.8) 0%, rgba(139, 202, 253, 0) 100%), linear-gradient(0deg, rgb(0, 75, 176), rgb(0, 75, 176)); border-radius: 0.75rem; padding: 12px 24px; min-height: 48px; min-width: 102px;">
+      <span style="position: absolute; inset: 1px; background: linear-gradient(177.95deg, rgba(255, 255, 255, 0.19) 0%, rgba(255, 255, 255, 0) 100%); border-radius: calc(-1px + 0.75rem); z-index: 0;"></span>
+      <span style="position: absolute; inset: 2px; background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(139, 202, 253, 0.8) 0%, rgba(139, 202, 253, 0) 100%), linear-gradient(0deg, rgb(0, 75, 176), rgb(0, 75, 176)); border-radius: calc(-2px + 0.75rem); z-index: 0;"></span>
+      <div style="overflow: hidden; width: 100%; height: 100%; pointer-events: none; position: absolute; z-index: 1;">
+        <i style="bottom: -10px; position: absolute; animation: 2.35s ease-in-out 0.2s infinite normal none running floating-points; width: 2px; height: 2px; background-color: rgb(255, 255, 255); border-radius: 9999px; left: 10%;"></i>
+        <i style="bottom: -10px; position: absolute; animation: 2.5s ease-in-out 0.5s infinite normal none running floating-points; width: 2px; height: 2px; background-color: rgb(255, 255, 255); border-radius: 9999px; left: 30%; opacity: 0.7;"></i>
+        <i style="bottom: -10px; position: absolute; animation: 2.2s ease-in-out 0.1s infinite normal none running floating-points; width: 2px; height: 2px; background-color: rgb(255, 255, 255); border-radius: 9999px; left: 25%; opacity: 0.8;"></i>
+        <i style="bottom: -10px; position: absolute; animation: 2.05s ease-in-out 0s infinite normal none running floating-points; width: 2px; height: 2px; background-color: rgb(255, 255, 255); border-radius: 9999px; left: 44%; opacity: 0.6;"></i>
+        <i style="bottom: -10px; position: absolute; animation: 1.9s ease-in-out 0s infinite normal none running floating-points; width: 2px; height: 2px; background-color: rgb(255, 255, 255); border-radius: 9999px; left: 50%;"></i>
+        <i style="bottom: -10px; position: absolute; animation: 1.5s ease-in-out 1.5s infinite normal none running floating-points; width: 2px; height: 2px; background-color: rgb(255, 255, 255); border-radius: 9999px; left: 75%; opacity: 0.5;"></i>
+      </div>
+      <span style="z-index: 2; gap: 6px; position: relative; width: 100%; color: white; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 500; font-family: 'DM Sans', sans-serif; transition: color 0.2s ease-in-out;">
+        Ürünlerimizi İnceleyin
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="group-hover:translate-x-1 transition-transform" style="width: 18px; height: 18px;">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </span>
+    </a>
+  </div>
+  <a href="#" class="inline-flex items-center transition-all duration-300 group text-base font-light tracking-tight font-dm-sans border rounded pt-3.5 pr-6 pb-3.5 pl-6 text-slate-50 bg-white/5 border-white/20">
+    Projenizi Konuşalım
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </a>
+</div>
+    </div>
+
+    <!-- Right Column: UI Mockups -->
+    <div class="mt-8 sm:mt-0 relative perspective-1000">
+  <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4aa0ba0f-cf6d-4050-bf33-824539eb56e0_1600w.png" alt="Product UI" class="w-full h-auto block">
+</div>
+  </div>
+  <div class="spline-container absolute top-0 left-0 w-full h-full -z-10"><iframe src="https://my.spline.design/retrofuturismbganimation-Lb3VtL1bNaYUnirKNzn0FvaW" frameborder="0" width="100%" height="100%"></iframe></div>
+</main>
+
+<section id="services" class="bg-[#0B0A09] py-32 relative">
+  <!-- Premium blurred vertical gradient columns background -->
+  <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-[#000000]">
+    <!-- Black buffer zone at top for smooth Hero->Services transition -->
+    <div class="absolute inset-x-0 top-0 h-[280px] bg-black z-10"></div>
+    <!-- Soft fade from black into the columns area -->
+    <div class="absolute inset-x-0 top-[200px] h-[250px] bg-gradient-to-b from-black to-transparent z-10"></div>
+
+    <!-- The vertical columns layer with blur filter - parallax scrolling container -->
+    <div id="services-parallax-bg" class="absolute inset-x-0 top-[300px] h-[2200px] flex filter blur-[80px] opacity-70" style="will-change: transform;">
+      <!-- 12 vertical columns of logo blue tones (arranged randomly for organic feel) -->
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#002D6E]/70 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#004BB0]/80 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#8BCAFD]/50 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#004BB0]/60 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#002D6E]/80 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#8BCAFD]/65 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#004BB0]/75 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#8BCAFD]/45 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#002D6E]/60 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#004BB0]/55 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#8BCAFD]/70 to-transparent"></div>
+      <div class="w-[8.33%] h-full bg-gradient-to-b from-transparent via-[#002D6E]/50 to-transparent"></div>
+    </div>
+
+    <!-- Very smooth bottom fade: blue -> white/sand (long gradual transition) -->
+    <div class="absolute inset-x-0 bottom-0 top-[1200px] bg-gradient-to-b from-transparent via-transparent to-[#F9F8F6]" style="background: linear-gradient(to bottom, transparent 0%, transparent 10%, rgba(249,248,246,0.15) 30%, rgba(249,248,246,0.4) 50%, rgba(249,248,246,0.75) 70%, #F9F8F6 100%);"></div>
+  </div>
+
+  <div class="max-w-7xl mr-auto ml-auto px-6 relative z-10">
+    <h2 class="text-4xl md:text-5xl text-center mb-16 tracking-tight text-white font-novecento-wide-bold">
+      Ürünlerimiz
+    </h2>
+
+    <div class="flex flex-col gap-6 max-w-[72rem] mx-auto relative">
+      
+      <!-- Product 1: Likapa -->
+      <div class="sticky-product-card group sticky top-24 bg-white/80 backdrop-blur-xl hover:bg-gradient-to-br hover:from-white/90 hover:to-blue-50/50 rounded-3xl p-8 md:p-12 border border-white/30 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 overflow-hidden relative">
+        <!-- Background dividers (Adapted from template) -->
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div class="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#004BB0] to-transparent"></div>
+          <div class="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#004BB0] to-transparent"></div>
+          <div class="absolute top-0 bottom-0 left-1/3 w-px bg-gradient-to-b from-transparent via-[#004BB0] to-transparent"></div>
+          <div class="absolute top-0 bottom-0 right-1/3 w-px bg-gradient-to-b from-transparent via-[#004BB0] to-transparent"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
+          <!-- Left Column: Product Info -->
+          <div class="flex flex-col justify-between min-h-full">
+            <div>
+              <span class="text-xs font-semibold tracking-wider text-[#004BB0] uppercase font-dm-sans">
+                Ürün 01
+              </span>
+              <h2 class="text-4xl sm:text-5xl font-novecento-wide-bold text-gray-900 mt-2 mb-6 tracking-tight leading-[1.1]">
+                Likapa
+              </h2>
+
+              <!-- subtle plus markers with divider -->
+              <div class="mt-8 relative mb-8">
+                <div class="absolute inset-0 flex items-center">
+                  <div class="w-full h-px bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-6 text-gray-500 px-0 relative">
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#004BB0]">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                    <span class="text-xs sm:text-sm font-dm-sans font-medium text-gray-600">Adisyon &amp; POS</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#004BB0]">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                    <span class="text-xs sm:text-sm font-dm-sans font-medium text-gray-600">Dijital QR Menü</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-8 overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
+                <img src="/assets/likapabanner.png" alt="Likapa banner" class="block w-full h-48 object-cover sm:h-56">
+              </div>
+            </div>
+
+            <div class="w-full mt-6">
+              <p class="text-sm font-bold text-gray-900 tracking-tight font-dm-sans">
+                Temassız Sipariş ve İşletme Yönetimi
+              </p>
+              <p class="mt-2 text-sm text-gray-600 font-dm-sans leading-relaxed">
+                Restoran, kafe ve yiyecek-içecek işletmeleri için tasarlanmış, bulut tabanlı yeni nesil adisyon ve dijital QR menü yönetim sistemi.
+              </p>
+              <a href="#contact" class="mt-6 inline-flex items-center justify-center gap-2 h-10 px-6 rounded-full bg-[#004BB0] hover:bg-[#002D6E] text-white text-xs font-semibold tracking-wider uppercase transition-colors font-dm-sans">
+                Detayları İnceleyin
+                <span class="inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Grid -->
+          <div class="grid grid-cols-2 gap-4 relative">
+            <div class="flex flex-col gap-4">
+              <article class="relative overflow-hidden aspect-[4/5] bg-[url('/assets/Adisyon.png')] bg-cover bg-center border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Adisyon</span>
+                </div>
+              </article>
+              <article class="relative overflow-hidden aspect-[4/3] bg-[url('/assets/Men%C3%BC.png')] bg-cover bg-center border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Menü</span>
+                </div>
+              </article>
+            </div>
+            <div class="flex flex-col gap-4">
+              <article class="relative overflow-hidden aspect-[4/3] bg-[url('/assets/Y%C3%B6netim.png')] bg-cover bg-center border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Yönetim</span>
+                </div>
+              </article>
+              <article class="relative overflow-hidden aspect-[4/5] bg-[url('/assets/KDS.png')] bg-cover bg-center border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">KDS</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: Bilte -->
+      <div class="sticky-product-card group sticky top-28 bg-white/80 backdrop-blur-xl hover:bg-gradient-to-br hover:from-white/90 hover:to-blue-50/50 rounded-3xl p-8 md:p-12 border border-white/30 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 overflow-hidden relative">
+        <!-- Background dividers -->
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div class="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#004BB0] to-transparent"></div>
+          <div class="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#004BB0] to-transparent"></div>
+          <div class="absolute top-0 bottom-0 left-1/3 w-px bg-gradient-to-b from-transparent via-[#004BB0] to-transparent"></div>
+          <div class="absolute top-0 bottom-0 right-1/3 w-px bg-gradient-to-b from-transparent via-[#004BB0] to-transparent"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
+          <!-- Left Column: Product Info -->
+          <div class="flex flex-col justify-between min-h-full">
+            <div>
+              <span class="text-xs font-semibold tracking-wider text-[#004BB0] uppercase font-dm-sans">
+                Ürün 02
+              </span>
+              <h2 class="text-4xl sm:text-5xl font-novecento-wide-bold text-gray-900 mt-2 mb-6 tracking-tight leading-[1.1]">
+                Bilte
+              </h2>
+
+              <!-- subtle plus markers with divider -->
+              <div class="mt-8 relative mb-8">
+                <div class="absolute inset-0 flex items-center">
+                  <div class="w-full h-px bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-6 text-gray-500 px-0 relative">
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#004BB0]">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                    <span class="text-xs sm:text-sm font-dm-sans font-medium text-gray-600">İş Emri Yönetimi</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#004BB0]">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                    <span class="text-xs sm:text-sm font-dm-sans font-medium text-gray-600">Saha Ekipleri Takibi</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full mt-6">
+              <p class="text-sm font-bold text-gray-900 tracking-tight font-dm-sans">
+                Saha Operasyonlarında Maksimum Hız
+              </p>
+              <p class="mt-2 text-sm text-gray-600 font-dm-sans leading-relaxed">
+                Saha ekiplerinizin iş emirlerini, görev dağılımlarını ve müşteri hizmet süreçlerini anlık olarak yöneten web ve mobil uyumlu bulut platformu.
+              </p>
+              <a href="#contact" class="mt-6 inline-flex items-center justify-center gap-2 h-10 px-6 rounded-full bg-[#004BB0] hover:bg-[#002D6E] text-white text-xs font-semibold tracking-wider uppercase transition-colors font-dm-sans">
+                Detayları İnceleyin
+                <span class="inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Grid -->
+          <div class="grid grid-cols-2 gap-4 relative">
+            <div class="flex flex-col gap-4">
+              <article class="relative overflow-hidden aspect-[4/5] bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/c6bb21d7-3ce2-44b4-abbf-2b0d092cd7fc_800w.jpg)] bg-cover border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 left-3">
+                  <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-900 border border-gray-100 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-[#004BB0]"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path></svg>
+                  </span>
+                </div>
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Mobil</span>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3">
+                  <p class="text-white text-base font-bold tracking-tight leading-tight font-dm-sans bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-xs inline-block">Saha Ekipleri</p>
+                </div>
+              </article>
+              <article class="relative overflow-hidden aspect-[4/3] bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/9b13123e-ec51-4d3a-b994-c64aab4555ba_800w.jpg)] bg-cover border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 left-3">
+                  <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-900 border border-gray-100 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-[#004BB0]"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+                  </span>
+                </div>
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Görev</span>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3">
+                  <p class="text-white text-base font-bold tracking-tight leading-tight font-dm-sans bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-xs inline-block">İş Emirleri</p>
+                </div>
+              </article>
+            </div>
+            <div class="flex flex-col gap-4">
+              <article class="relative overflow-hidden aspect-[4/3] bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/6dc04406-de49-4988-8d82-e1d9fe1d83c1_800w.jpg)] bg-cover border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 left-3">
+                  <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-900 border border-gray-100 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-[#004BB0]"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+                  </span>
+                </div>
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Form</span>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3">
+                  <p class="text-white text-base font-bold tracking-tight leading-tight font-dm-sans bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-xs inline-block">Dijital İmzalar</p>
+                </div>
+              </article>
+              <article class="relative overflow-hidden aspect-[4/5] bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/5ee0a38a-b5d3-4531-8793-98beed4af162_800w.jpg)] bg-cover border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 left-3">
+                  <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-900 border border-gray-100 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-[#004BB0]"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"></path><path d="m6.2 5.3 3.1 3.9"></path><path d="m12.4 3.4 3.1 4"></path><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"></path></svg>
+                  </span>
+                </div>
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Rota</span>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3">
+                  <p class="text-white text-base font-bold tracking-tight leading-tight font-dm-sans bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-xs inline-block">GPS Canlı Takip</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3: Kovan -->
+      <div class="sticky-product-card group sticky top-32 bg-white/80 backdrop-blur-xl hover:bg-gradient-to-br hover:from-white/90 hover:to-blue-50/50 rounded-3xl p-8 md:p-12 border border-white/30 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 overflow-hidden relative">
+        <!-- Background dividers -->
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div class="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#004BB0] to-transparent"></div>
+          <div class="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#004BB0] to-transparent"></div>
+          <div class="absolute top-0 bottom-0 left-1/3 w-px bg-gradient-to-b from-transparent via-[#004BB0] to-transparent"></div>
+          <div class="absolute top-0 bottom-0 right-1/3 w-px bg-gradient-to-b from-transparent via-[#004BB0] to-transparent"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
+          <!-- Left Column: Product Info -->
+          <div class="flex flex-col justify-between min-h-full">
+            <div>
+              <span class="text-xs font-semibold tracking-wider text-[#004BB0] uppercase font-dm-sans">
+                Ürün 03
+              </span>
+              <h2 class="text-4xl sm:text-5xl font-novecento-wide-bold text-gray-900 mt-2 mb-6 tracking-tight leading-[1.1]">
+                Kovan
+              </h2>
+
+              <!-- subtle plus markers with divider -->
+              <div class="mt-8 relative mb-8">
+                <div class="absolute inset-0 flex items-center">
+                  <div class="w-full h-px bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-6 text-gray-500 px-0 relative">
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#004BB0]">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                    <span class="text-xs sm:text-sm font-dm-sans font-medium text-gray-600">Üye Yönetimi</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#004BB0]">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                    <span class="text-xs sm:text-sm font-dm-sans font-medium text-gray-600">Aidat Otomasyonu</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full mt-6">
+              <p class="text-sm font-bold text-gray-900 tracking-tight font-dm-sans">
+                Topluluk ve Dernek Otomasyonu
+              </p>
+              <p class="mt-2 text-sm text-gray-600 font-dm-sans leading-relaxed">
+                Dernekler, topluluklar ve vakıflar için üyelik başvurularını kolaylaştıran, aidat ve onay süreçlerini tek panelden yöneten bulut portalı.
+              </p>
+              <a href="#contact" class="mt-6 inline-flex items-center justify-center gap-2 h-10 px-6 rounded-full bg-[#004BB0] hover:bg-[#002D6E] text-white text-xs font-semibold tracking-wider uppercase transition-colors font-dm-sans">
+                Detayları İnceleyin
+                <span class="inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Grid -->
+          <div class="grid grid-cols-2 gap-4 relative">
+            <div class="flex flex-col gap-4">
+              <article class="relative overflow-hidden aspect-[4/5] bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/c6bb21d7-3ce2-44b4-abbf-2b0d092cd7fc_800w.jpg)] bg-cover border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 left-3">
+                  <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-900 border border-gray-100 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-[#004BB0]"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path></svg>
+                  </span>
+                </div>
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Portal</span>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3">
+                  <p class="text-white text-base font-bold tracking-tight leading-tight font-dm-sans bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-xs inline-block">Üyelik Onayı</p>
+                </div>
+              </article>
+              <article class="relative overflow-hidden aspect-[4/3] bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/9b13123e-ec51-4d3a-b994-c64aab4555ba_800w.jpg)] bg-cover border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 left-3">
+                  <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-900 border border-gray-100 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-[#004BB0]"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+                  </span>
+                </div>
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Aidat</span>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3">
+                  <p class="text-white text-base font-bold tracking-tight leading-tight font-dm-sans bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-xs inline-block">Online Tahsilat</p>
+                </div>
+              </article>
+            </div>
+            <div class="flex flex-col gap-4">
+              <article class="relative overflow-hidden aspect-[4/3] bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/6dc04406-de49-4988-8d82-e1d9fe1d83c1_800w.jpg)] bg-cover border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 left-3">
+                  <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-900 border border-gray-100 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-[#004BB0]"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+                  </span>
+                </div>
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Topluluk</span>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3">
+                  <p class="text-white text-base font-bold tracking-tight leading-tight font-dm-sans bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-xs inline-block">SMS &amp; Bildirimler</p>
+                </div>
+              </article>
+              <article class="relative overflow-hidden aspect-[4/5] bg-[url(https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/5ee0a38a-b5d3-4531-8793-98beed4af162_800w.jpg)] bg-cover border-gray-100 border rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute top-3 left-3">
+                  <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-900 border border-gray-100 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-[#004BB0]"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"></path><path d="m6.2 5.3 3.1 3.9"></path><path d="m12.4 3.4 3.1 4"></path><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"></path></svg>
+                  </span>
+                </div>
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 rounded-md bg-white/80 backdrop-blur text-[10px] text-gray-800 font-semibold border border-gray-100 font-dm-sans">Gelir</span>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3">
+                  <p class="text-white text-base font-bold tracking-tight leading-tight font-dm-sans bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-xs inline-block">Gelir Analiz Raporu</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section><!-- Horizontal Accordion Section -->
+<section id="services-accordion" class="bg-[#F9F8F6] pb-24 px-6 overflow-hidden relative">
+  <!-- Custom cursor element for accordion cards hover -->
+  <div class="accordion-custom-cursor fixed w-4 h-4 bg-white rounded-full pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-200" style="mix-blend-mode: difference;"></div>
+
+  <div class="max-w-[72rem] mx-auto relative">
+    <h3 class="text-3xl md:text-4xl text-center mb-12 tracking-tight text-gray-900 font-novecento-wide-bold">
+      Sizlere nasıl destek olabiliriz?
+    </h3>
+
+    <!-- Flex container for Horizontal Accordion (Height is auto on mobile, 620px on desktop) -->
+    <div class="horizontal-accordion-container flex flex-col md:flex-row gap-4 h-auto md:h-[620px] w-full relative">
+      
+      <!-- Item 1 -->
+      <div class="horizontal-accordion-item group relative overflow-hidden rounded-[2rem] transition-all duration-700 ease-in-out cursor-pointer p-6 flex flex-col justify-between" 
+           style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1170&auto=format&fit=crop');"
+           data-accordion-index="0">
+        <!-- Normal State Dark Vignette -->
+        <div class="absolute inset-0 bg-black/30 group-hover:opacity-0 group-[.active]:opacity-0 transition-opacity duration-500 z-0"></div>
+        <!-- Active State Blur & Dark overlay -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 z-0"></div>
+        
+        <!-- Content Wrapper -->
+        <div class="relative z-10 h-full flex flex-col justify-between w-full shrink-0">
+          <!-- Top Title Header (No delay on close, slow transition on open) -->
+          <div class="flex items-center justify-between w-full opacity-0 group-[.active]:opacity-100 transition-all duration-200 delay-0 group-[.active]:duration-500 group-[.active]:delay-300">
+            <div class="accordion-header">
+              <h4 class="text-2xl font-novecento-wide-bold text-white">Mobil Çözümler</h4>
+            </div>
+            <div class="bg-white/10 border border-white/20 text-white p-3 rounded-full shadow-md shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                <path d="M12 18h.01"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Expanded Bottom Content Card (Staggered slow fade in on hover, instant close) -->
+          <div class="accordion-expanded-content opacity-0 group-[.active]:opacity-100 transition-all duration-200 delay-0 group-[.active]:duration-500 group-[.active]:delay-350 h-0 group-[.active]:h-auto overflow-hidden">
+            <div class="border border-white/15 bg-black/45 backdrop-blur-md rounded-2xl p-6 w-full">
+              <div class="text-sm font-semibold tracking-wider text-white font-dm-sans mb-3">
+                Flutter, React Native &amp; Native
+              </div>
+              <div class="border-t border-white/10 pt-3">
+                <p class="text-sm text-slate-300 font-dm-sans leading-relaxed mb-4">
+                  iOS ve Android platformlarında yüksek performanslı, kullanıcı deneyimi odaklı mobil uygulamalar geliştiriyoruz.
+                </p>
+                <div class="text-[13px] text-slate-400 font-dm-sans space-y-2">
+                  <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> App Store &amp; Play Store süreçleri</div>
+                  <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Gelişmiş veri önbellekleme</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collapsed Bottom Frosted Glass Overlay -->
+        <div class="frosted-gradient-bottom absolute bottom-0 left-0 right-0 h-28 z-10 rounded-b-[2rem] transition-opacity duration-500 group-[.active]:opacity-0 group-[.active]:pointer-events-none"></div>
+        
+        <!-- Collapsed Bottom Sharp Text Container -->
+        <div class="absolute bottom-0 left-0 right-0 h-28 z-20 flex items-end p-6 rounded-b-[2rem] transition-opacity duration-500 group-[.active]:opacity-0 group-[.active]:pointer-events-none">
+          <h4 class="text-xl font-novecento-wide-bold text-white tracking-wide">Mobil Çözümler</h4>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="horizontal-accordion-item group relative overflow-hidden rounded-[2rem] transition-all duration-700 ease-in-out flex-1 bg-cover bg-center p-6 flex flex-col justify-between" 
+           style="background-image: url('https://images.unsplash.com/photo-1547082299-de196ea013d6?q=80&w=1170&auto=format&fit=crop');"
+           data-accordion-index="1">
+        <div class="absolute inset-0 bg-black/30 group-hover:opacity-0 group-[.active]:opacity-0 transition-opacity duration-500 z-0"></div>
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 z-0"></div>
+        
+        <div class="relative z-10 h-full flex flex-col justify-between w-full shrink-0">
+          <!-- Top Title Header -->
+          <div class="flex items-center justify-between w-full opacity-0 group-[.active]:opacity-100 transition-all duration-200 delay-0 group-[.active]:duration-500 group-[.active]:delay-300">
+            <div class="accordion-header">
+              <h4 class="text-2xl font-novecento-wide-bold text-white">Web Geliştirme</h4>
+            </div>
+            <div class="bg-white/10 border border-white/20 text-white p-3 rounded-full shadow-md shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                <path d="M2 12h20"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Expanded Bottom Content Card -->
+          <div class="accordion-expanded-content opacity-0 group-[.active]:opacity-100 transition-all duration-200 delay-0 group-[.active]:duration-500 group-[.active]:delay-350 h-0 group-[.active]:h-auto overflow-hidden">
+            <div class="border border-white/15 bg-black/45 backdrop-blur-md rounded-2xl p-6 w-full">
+              <div class="text-sm font-semibold tracking-wider text-white font-dm-sans mb-3">
+                React, Next.js &amp; API Entegrasyonu
+              </div>
+              <div class="border-t border-white/10 pt-3">
+                <p class="text-sm text-slate-300 font-dm-sans leading-relaxed mb-4">
+                  İş süreçlerinizi hızlandıran kurumsal portallar, yönetim panelleri ve operasyon ekranları kuruyoruz.
+                </p>
+                <div class="text-[13px] text-slate-400 font-dm-sans space-y-2">
+                  <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> OWASP güvenlik ve log kontrolleri</div>
+                  <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Semantik HTML5 ve SEO uyumluluğu</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collapsed Bottom Overlays -->
+        <div class="frosted-gradient-bottom absolute bottom-0 left-0 right-0 h-28 z-10 rounded-b-[2rem] transition-opacity duration-500 group-[.active]:opacity-0 group-[.active]:pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-28 z-20 flex items-end p-6 rounded-b-[2rem] transition-opacity duration-500 group-[.active]:opacity-0 group-[.active]:pointer-events-none">
+          <h4 class="text-xl font-novecento-wide-bold text-white tracking-wide">Web Geliştirme</h4>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="horizontal-accordion-item group relative overflow-hidden rounded-[2rem] transition-all duration-700 ease-in-out flex-1 bg-cover bg-center p-6 flex flex-col justify-between" 
+           style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop');"
+           data-accordion-index="2">
+        <div class="absolute inset-0 bg-black/30 group-hover:opacity-0 group-[.active]:opacity-0 transition-opacity duration-500 z-0"></div>
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 z-0"></div>
+        
+        <div class="relative z-10 h-full flex flex-col justify-between w-full shrink-0">
+          <!-- Top Title Header -->
+          <div class="flex items-center justify-between w-full opacity-0 group-[.active]:opacity-100 transition-all duration-200 delay-0 group-[.active]:duration-500 group-[.active]:delay-300">
+            <div class="accordion-header">
+              <h4 class="text-2xl font-novecento-wide-bold text-white">ERP &amp; CRM Çözümleri</h4>
+            </div>
+            <div class="bg-white/10 border border-white/20 text-white p-3 rounded-full shadow-md shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Expanded Bottom Content Card -->
+          <div class="accordion-expanded-content opacity-0 group-[.active]:opacity-100 transition-all duration-200 delay-0 group-[.active]:duration-500 group-[.active]:delay-350 h-0 group-[.active]:h-auto overflow-hidden">
+            <div class="border border-white/15 bg-black/45 backdrop-blur-md rounded-2xl p-6 w-full">
+              <div class="text-sm font-semibold tracking-wider text-white font-dm-sans mb-3">
+                Müşteri 360, Finans &amp; Entegrasyon
+              </div>
+              <div class="border-t border-white/10 pt-3">
+                <p class="text-sm text-slate-300 font-dm-sans leading-relaxed mb-4">
+                  İşinizin kurallarına göre şekillenen, ölçülebilir verimlilik sağlayan özel yazılım yatırımları.
+                </p>
+                <div class="text-[13px] text-slate-400 font-dm-sans space-y-2">
+                  <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> CRM teklif, satış ve sipariş takibi</div>
+                  <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Finans, stok ve operasyon otomasyonu</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collapsed Bottom Overlays -->
+        <div class="frosted-gradient-bottom absolute bottom-0 left-0 right-0 h-28 z-10 rounded-b-[2rem] transition-opacity duration-500 group-[.active]:opacity-0 group-[.active]:pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-28 z-20 flex items-end p-6 rounded-b-[2rem] transition-opacity duration-500 group-[.active]:opacity-0 group-[.active]:pointer-events-none">
+          <h4 class="text-xl font-novecento-wide-bold text-white tracking-wide">ERP &amp; CRM Çözümleri</h4>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="horizontal-accordion-item group relative overflow-hidden rounded-[2rem] transition-all duration-700 ease-in-out flex-1 bg-cover bg-center p-6 flex flex-col justify-between" 
+           style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1170&auto=format&fit=crop');"
+           data-accordion-index="3">
+        <div class="absolute inset-0 bg-black/30 group-hover:opacity-0 group-[.active]:opacity-0 transition-opacity duration-500 z-0"></div>
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 z-0"></div>
+        
+        <div class="relative z-10 h-full flex flex-col justify-between w-full shrink-0">
+          <!-- Top Title Header -->
+          <div class="flex items-center justify-between w-full opacity-0 group-[.active]:opacity-100 transition-all duration-200 delay-0 group-[.active]:duration-500 group-[.active]:delay-300">
+            <div class="accordion-header">
+              <h4 class="text-2xl font-novecento-wide-bold text-white">Bulut &amp; AI Çözümleri</h4>
+            </div>
+            <!-- Cloud Icon Swap -->
+            <div class="bg-white/10 border border-white/20 text-white p-3 rounded-full shadow-md shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud">
+                <path d="M17.5 19A3.5 3.5 0 0 0 21 15.5c0-2.79-2.54-4.5-5-4.5-.47 0-.89.09-1.3.27A6 6 0 0 0 3 11.5c0 3.42 2.1 5.5 5.5 5.5h9"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Expanded Bottom Content Card -->
+          <div class="accordion-expanded-content opacity-0 group-[.active]:opacity-100 transition-all duration-200 delay-0 group-[.active]:duration-500 group-[.active]:delay-350 h-0 group-[.active]:h-auto overflow-hidden">
+            <div class="border border-white/15 bg-black/45 backdrop-blur-md rounded-2xl p-6 w-full">
+              <div class="text-sm font-semibold tracking-wider text-white font-dm-sans mb-3">
+                LLM Entegrasyonu &amp; Serverless
+              </div>
+              <div class="border-t border-white/10 pt-3">
+                <p class="text-sm text-slate-300 font-dm-sans leading-relaxed mb-4">
+                  AWS, Azure ve GCP üzerinde optimize sunucu mimarileri ve yapay zeka entegrasyonu.
+                </p>
+                <div class="text-[13px] text-slate-400 font-dm-sans space-y-2">
+                  <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> OpenAI, Claude ve Llama modelleri</div>
+                  <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Vektör tabanlı veritabanları</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collapsed Bottom Overlays -->
+        <div class="frosted-gradient-bottom absolute bottom-0 left-0 right-0 h-28 z-10 rounded-b-[2rem] transition-opacity duration-500 group-[.active]:opacity-0 group-[.active]:pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-28 z-20 flex items-end p-6 rounded-b-[2rem] transition-opacity duration-500 group-[.active]:opacity-0 group-[.active]:pointer-events-none">
+          <h4 class="text-xl font-novecento-wide-bold text-white tracking-wide">Bulut &amp; AI Çözümleri</h4>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CSS for Hover Active state scaling, custom cursor, and gradient frosted mask -->
+<style>
+.horizontal-accordion-item {
+  cursor: none !important;
+  height: 110px;
+  flex: none;
+  transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.horizontal-accordion-item.active {
+  height: 420px;
+}
+@media (min-width: 768px) {
+  .horizontal-accordion-item {
+    height: 100% !important;
+    flex: 1;
+  }
+  .horizontal-accordion-item.active {
+    flex: 3.5 !important;
+    height: 100% !important;
+  }
+}
+.frosted-gradient-bottom {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  -webkit-mask-image: linear-gradient(to top, black 25%, rgba(0, 0, 0, 0.4) 65%, transparent 100%) !important;
+  mask-image: linear-gradient(to top, black 25%, rgba(0, 0, 0, 0.4) 65%, transparent 100%) !important;
+}
+</style>
+
+<!-- Horizontal Accordion script -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".horizontal-accordion-container");
+  const items = document.querySelectorAll(".horizontal-accordion-item");
+  const customCursor = document.querySelector(".accordion-custom-cursor");
+  
+  items.forEach(item => {
+    item.addEventListener("mouseenter", () => {
+      items.forEach(el => el.classList.remove("active"));
+      item.classList.add("active");
+    });
+  });
+
+  if (container) {
+    container.addEventListener("mouseleave", () => {
+      items.forEach(el => el.classList.remove("active"));
+    });
+    
+    // Mouse movement updates for custom round cursor
+    container.addEventListener("mousemove", (e) => {
+      if (customCursor) {
+        customCursor.style.left = `${e.clientX}px`;
+        customCursor.style.top = `${e.clientY}px`;
+      }
+    });
+
+    items.forEach(item => {
+      item.addEventListener("mouseenter", () => {
+        if (customCursor) customCursor.style.opacity = "1";
+      });
+      item.addEventListener("mouseleave", () => {
+        if (customCursor) customCursor.style.opacity = "0";
+      });
+    });
+  }
+
+  // Click on sticky product cards to scroll them into view
+  const stickyCards = document.querySelectorAll(".sticky-product-card");
+  stickyCards.forEach((card, index) => {
+    card.addEventListener("click", (e) => {
+      // If clicked a button or link, let the browser handle it
+      if (e.target.closest("a") || e.target.closest("button")) return;
+      
+      const offsets = [96, 112, 128];
+      const targetOffset = offsets[index] || 96;
+      
+      const rect = card.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const targetY = rect.top + scrollTop - targetOffset;
+      
+      window.scrollTo({
+        top: targetY,
+        behavior: "smooth"
+      });
+    });
+  });
+
+  // Parallax scroll effect for vertical gradient columns background
+  const servicesSection = document.getElementById("services");
+  const parallaxBg = document.getElementById("services-parallax-bg");
+  
+  if (servicesSection && parallaxBg) {
+    const parallaxSpeed = 0.35; // Background moves at 35% of scroll speed
+    
+    const updateParallax = () => {
+      const rect = servicesSection.getBoundingClientRect();
+      const sectionTop = rect.top;
+      const windowHeight = window.innerHeight;
+      
+      // Only apply parallax when the section is in view
+      if (sectionTop < windowHeight && rect.bottom > 0) {
+        const scrolledIntoSection = Math.max(0, windowHeight - sectionTop);
+        const translateY = scrolledIntoSection * parallaxSpeed;
+        parallaxBg.style.transform = `translateY(-${translateY}px)`;
+      }
+    };
+    
+    window.addEventListener("scroll", updateParallax, { passive: true });
+    updateParallax(); // Initial call
+  }
+});
+</script>
+
+<!-- PROCESS PATH -->
+<section id="process" class="bg-[#0B0A09] text-white py-32 px-6 border-y border-stone-900 relative min-h-[85vh] flex items-center">
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,75,176,0.06),transparent_60%)] pointer-events-none"></div>
+
+  <div class="max-w-[72rem] mx-auto w-full">
+    <div class="text-center mb-20">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-novecento-wide-bold tracking-tight text-white mb-4">
+        İş Sürecimiz Nasıl İlerliyor?
+      </h2>
+      <p class="text-base text-stone-400 font-dm-sans max-w-2xl mx-auto">
+        Her projede hedeflerinize ve bütçenize en uygun adımlarla ilerleyip şeffaf raporlama sağlıyoruz.
+      </p>
+    </div>
+
+    <div class="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-4 lg:gap-8">
+      <!-- Connecting Line (Desktop) -->
+      <div class="hidden md:block absolute top-8 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+      <!-- Step 1 -->
+      <div class="relative flex flex-col items-center text-center group">
+        <div class="w-16 h-16 rounded-full bg-stone-900 border border-stone-800 group-hover:border-blue-500/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] flex items-center justify-center relative z-10 mb-6 transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+          <span class="text-xl font-bold font-dm-sans text-stone-300 group-hover:text-white transition-colors">01</span>
+        </div>
+        <h3 class="text-lg font-bold text-white font-dm-sans mb-3">Analiz &amp; Kapsam</h3>
+        <p class="text-xs sm:text-sm text-stone-400 font-dm-sans leading-relaxed max-w-[200px]">
+          Projenin gereksinimlerini detaylandırır, yol haritasını çizeriz.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative flex flex-col items-center text-center group">
+        <div class="w-16 h-16 rounded-full bg-stone-900 border border-stone-800 group-hover:border-blue-500/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] flex items-center justify-center relative z-10 mb-6 transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+          <span class="text-xl font-bold font-dm-sans text-stone-300 group-hover:text-white transition-colors">02</span>
+        </div>
+        <h3 class="text-lg font-bold text-white font-dm-sans mb-3">UI/UX Tasarım</h3>
+        <p class="text-xs sm:text-sm text-stone-400 font-dm-sans leading-relaxed max-w-[200px]">
+          İleri düzey, kullanıcı odaklı ve akıcı arayüz ekranları tasarlarız.
+        </p>
+      </div>
+
+      <!-- Step 3 (Highlight Developer Glow) -->
+      <div class="relative flex flex-col items-center text-center group">
+        <div class="w-16 h-16 rounded-full bg-stone-900 border border-blue-500/60 shadow-[0_0_20px_rgba(59,130,246,0.25)] flex items-center justify-center relative z-10 mb-6 transition-all duration-300">
+          <span class="text-xl font-bold font-dm-sans text-blue-400 group-hover:text-blue-300 transition-colors">03</span>
+        </div>
+        <h3 class="text-lg font-bold text-white font-dm-sans mb-3">Yazılım &amp; Kod</h3>
+        <p class="text-xs sm:text-sm text-stone-400 font-dm-sans leading-relaxed max-w-[200px]">
+          En temiz kod standartlarıyla güvenli ve hızlı geliştirme yaparız.
+        </p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="relative flex flex-col items-center text-center group">
+        <div class="w-16 h-16 rounded-full bg-stone-900 border border-stone-800 group-hover:border-blue-500/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] flex items-center justify-center relative z-10 mb-6 transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+          <span class="text-xl font-bold font-dm-sans text-stone-300 group-hover:text-white transition-colors">04</span>
+        </div>
+        <h3 class="text-lg font-bold text-white font-dm-sans mb-3">Test &amp; QA</h3>
+        <p class="text-xs sm:text-sm text-stone-400 font-dm-sans leading-relaxed max-w-[200px]">
+          Performans, güvenlik ve hata denetimlerini eksiksiz tamamlarız.
+        </p>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="relative flex flex-col items-center text-center group">
+        <div class="w-16 h-16 rounded-full bg-stone-900 border border-stone-800 group-hover:border-blue-500/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] flex items-center justify-center relative z-10 mb-6 transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+          <span class="text-xl font-bold font-dm-sans text-stone-300 group-hover:text-white transition-colors">05</span>
+        </div>
+        <h3 class="text-lg font-bold text-white font-dm-sans mb-3">Yayın &amp; SLA</h3>
+        <p class="text-xs sm:text-sm text-stone-400 font-dm-sans leading-relaxed max-w-[200px]">
+          Ürünü canlıya alır, 7/24 izleme ve güncelleme desteği sunarız.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VİZYONUMUZ (LİGHT THEME) -->
+<section id="manifesto" class="relative py-32 bg-white text-gray-900 border-t border-gray-100">
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,75,176,0.015),transparent_60%)] pointer-events-none"></div>
+
+  <div class="sm:px-6 lg:px-8 max-w-4xl mr-auto ml-auto pr-6 pl-6 text-center relative z-10">
+    <span class="text-xs font-semibold tracking-wider text-[#004BB0] uppercase font-dm-sans block mb-3">
+      Vizyonumuz
+    </span>
+    <h3 class="text-3xl sm:text-5xl font-novecento-wide-bold tracking-tight text-gray-900 mb-8 leading-tight">
+      Sadece Kod Yazmıyoruz,<br>İşinize Değer Katıyoruz.
+    </h3>
+    
+    <div class="relative bg-gray-50 border border-gray-100 rounded-[2rem] p-8 sm:p-12 shadow-sm">
+       <p class="text-lg sm:text-xl text-gray-600 font-dm-sans leading-relaxed text-center">
+         Biz sadece yazılım geliştirmiyoruz; iş süreçlerinizi analiz ediyor ve gerçek iş problemlerinizi çözüyoruz. Geliştirdiğimiz her mobil, web ve bulut uygulamasını; işinizi büyütmek, verimliliğinizi artırmak ve geleceğe hazır ölçeklenebilir bir altyapı sunmak amacıyla tasarlıyoruz.
+       </p>
+    </div>
+  </div>
+</section>
+
+<!-- Transition Divider Wave (Softrika colors - Seamless Loop) -->
+<div class="relative w-full h-40 md:h-64 overflow-hidden bg-white z-0 pointer-events-none">
+  <style>
+    @keyframes waveGlow1 {
+      0%, 100% { stop-color: #004BB0; }
+      50% { stop-color: #8BCAFD; }
+    }
+    @keyframes waveGlow2 {
+      0%, 100% { stop-color: #8BCAFD; }
+      50% { stop-color: #002D6E; }
+    }
+    @keyframes waveGlow3 {
+      0%, 100% { stop-color: #002D6E; }
+      50% { stop-color: #004BB0; }
+    }
+    .wave-stop-1 {
+      animation: waveGlow1 8s ease-in-out infinite;
+    }
+    .wave-stop-2 {
+      animation: waveGlow2 8s ease-in-out infinite;
+    }
+    .wave-stop-3 {
+      animation: waveGlow3 8s ease-in-out infinite;
+    }
+  </style>
+  <svg viewBox="0 0 2880 320" class="absolute bottom-0 left-0 w-[200%] h-full transform-gpu"
+    preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" class="wave-stop-1" stop-color="#004BB0" />
+        <stop offset="50%" class="wave-stop-2" stop-color="#8BCAFD" />
+        <stop offset="100%" class="wave-stop-3" stop-color="#002D6E" />
+      </linearGradient>
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="15" result="blur"></feGaussianBlur>
+        <feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
+      </filter>
+    </defs>
+    <!-- Extended path to 4320 width for seamless 1440 translation loop -->
+    <path d="M 0 160 C 480 260, 960 60, 1440 160 C 1920 260, 2400 60, 2880 160 C 3360 260, 3840 60, 4320 160 L 4320 320 L 0 320 Z"
+      fill="url(#glowGrad)" filter="url(#glow)" opacity="0.4">
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="-1440,0" dur="18s"
+        repeatCount="indefinite" />
+    </path>
+    <path d="M 0 190 C 480 90, 960 290, 1440 190 C 1920 90, 2400 290, 2880 190 C 3360 90, 3840 290, 4320 190 L 4320 320 L 0 320 Z"
+      fill="url(#glowGrad)" filter="url(#glow)" opacity="0.7">
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="-1440,0" dur="14s"
+        repeatCount="indefinite" />
+    </path>
+    <path d="M 0 220 C 480 140, 960 320, 1440 220 C 1920 140, 2400 320, 2880 220 C 3360 140, 3840 320, 4320 220 L 4320 320 L 0 320 Z"
+      fill="#0B0A09">
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="-1440,0" dur="22s"
+        repeatCount="indefinite" />
+    </path>
+  </svg>
+</div>
+
+<!-- FOOTER -->
+<footer class="relative py-24 bg-[#0B0A09] text-white">
+  <div class="sm:px-6 md:px-10 relative max-w-7xl mr-auto ml-auto pr-4 pb-0 pl-4">
+    <!-- Soft radial glow (Adapted to Softrika brand blue) -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute left-0 bottom-0 w-[60%] h-[80%] rounded-[40%] bg-gradient-to-tr from-blue-900/10 to-transparent blur-3xl"></div>
+    </div>
+
+    <!-- Eyebrow -->
+    <div class="flex items-center justify-center gap-4 text-stone-400 text-sm">
+      <span class="h-px w-12 bg-white/10"></span>
+      <span class="italic font-dm-sans">Dilediğiniz Zaman Ulaşın</span>
+      <span class="h-px w-12 bg-white/10"></span>
+    </div>
+
+    <!-- Heading -->
+    <h2 class="mt-4 text-4xl sm:text-6xl text-white text-center font-novecento-wide-bold tracking-tight">
+      Bağlantıda <span class="text-[#8BCAFD]">Kalalım</span>
+    </h2>
+
+    <!-- Copy -->
+    <p class="mt-6 text-sm sm:text-base text-stone-400 max-w-xl mx-auto text-center font-dm-sans leading-relaxed">
+      Sorularınız mı var yoksa yeni bir proje mi hayata geçirmek istiyorsunuz? Bizimle iletişime geçmekten çekinmeyin; yeni iş ortaklıklarına ve fikir alışverişlerine her zaman açığız!
+    </p>
+
+    <!-- Logo & Text Above Button -->
+    <div class="mt-10 flex items-center justify-center gap-3 select-none pointer-events-none mb-6">
+      <div class="w-11 h-11 flex items-center justify-center overflow-visible shrink-0">
+        <img src="/image-cropped.svg" alt="SOFTRIKA logo" class="w-full h-full object-contain">
+      </div>
+      <div class="font-novecento-wide-bold text-xl sm:text-2xl text-stone-50 leading-none tracking-wider">
+        SOFTRIKA
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-6 flex justify-center">
+      <a href="#contact"
+        class="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white/5 hover:bg-white/10 ring-1 ring-white/10 text-white text-sm font-medium tracking-tight transition shadow-[inset_0_-2px_0_rgba(255,255,255,0.15)] font-dm-sans">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-arrow-up-right w-4 h-4" style="stroke-width:1.5">
+          <path d="M7 7h10v10"></path>
+          <path d="M7 17 17 7"></path>
+        </svg>
+        Bizimle İletişime Geçin
+      </a>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-14 h-px bg-white/5"></div>
+    <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 font-dm-sans">
+      <!-- Left: Copyright and Tüm Hakları Saklıdır -->
+      <p class="font-dm-sans">© <span id="year" class="font-dm-sans">2026</span> SOFTRIKA. Tüm hakları saklıdır.</p>
+      
+      <!-- Right: Email & Social Icons Row -->
+      <div class="flex items-center gap-6">
+        <a href="mailto:info@softrika.com" class="text-stone-400 hover:text-white transition underline underline-offset-4 font-dm-sans">
+          info@softrika.com
+        </a>
+        <span class="h-4 w-px bg-white/10 hidden sm:inline"></span>
+        
+        <div class="flex items-center gap-4 text-stone-400">
+          <a href="#" aria-label="X (Twitter)" class="hover:text-white transition p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter w-4.5 h-4.5">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="hover:text-white transition p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-4.5 h-4.5">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="hover:text-white transition p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook w-4.5 h-4.5">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
