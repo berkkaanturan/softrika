@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative py-24 bg-[#0B0A09] text-white">
+    <footer id="contact" className="relative py-24 bg-[#0B0A09] text-white">
       <div className="sm:px-6 md:px-10 relative max-w-7xl mr-auto ml-auto pr-4 pb-0 pl-4">
         {/* Soft radial glow */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
 
         {/* CTA */}
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex justify-center mb-24">
           <Link href="#contact"
             className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white/5 hover:bg-white/10 ring-1 ring-white/10 text-white text-sm font-medium tracking-tight transition shadow-[inset_0_-2px_0_rgba(255,255,255,0.15)] font-dm-sans">
             <ArrowUpRight className="w-4 h-4" style={{ strokeWidth: 1.5 }} />

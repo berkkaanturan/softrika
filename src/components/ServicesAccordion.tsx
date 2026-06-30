@@ -3,7 +3,123 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, Smartphone, Network, Cloud } from "lucide-react";
+import { Globe, Smartphone, Network, Cloud, Mail, ArrowRight } from "lucide-react";
+
+// Interactive contact button inside accordion cards
+function ServiceContactButton({ serviceTitle }: { serviceTitle: string }) {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Avoid triggering accordion parent events
+    if (clicked) {
+      window.location.href = "mailto:iletisim@softrika.com";
+    } else {
+      setClicked(true);
+    }
+  };
+
+  return (
+    <motion.button
+      layout
+      onClick={handleClick}
+      animate={{
+        borderRadius: clicked ? "12px" : "9999px"
+      }}
+      transition={{
+        layout: { duration: 0.35, ease: "easeInOut" },
+        borderRadius: { duration: 0.3 }
+      }}
+      className="group mt-6 relative overflow-hidden h-10 px-5 border border-white/20 text-white text-xs font-semibold tracking-wider uppercase shadow-md flex items-center justify-center cursor-pointer"
+    >
+      {/* Premium Blue Background overlay */}
+      <motion.div
+        initial={false}
+        animate={{ opacity: clicked ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(65.28% 65.28% at 50% 100%, rgba(139, 202, 253, 0.8) 0%, rgba(139, 202, 253, 0) 100%), linear-gradient(0deg, rgb(0, 75, 176), rgb(0, 75, 176))"
+        }}
+      />
+
+      {/* Unclicked Background hover overlay */}
+      <motion.div
+        initial={false}
+        animate={{ opacity: clicked ? 0 : 1 }}
+        className="absolute inset-0 z-0 pointer-events-none bg-white/10 group-hover:bg-white/20 transition-colors"
+      />
+
+      {/* Inner borders & particles */}
+      <AnimatePresence>
+        {clicked && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 pointer-events-none z-0"
+          >
+            <span
+              style={{
+                position: "absolute",
+                inset: "1px",
+                background: "linear-gradient(177.95deg, rgba(255, 255, 255, 0.19) 0%, rgba(255, 255, 255, 0) 100%)",
+                borderRadius: "11px",
+                zIndex: 0,
+              }}
+            ></span>
+            <span
+              style={{
+                position: "absolute",
+                inset: "2px",
+                background: "radial-gradient(65.28% 65.28% at 50% 100%, rgba(139, 202, 253, 0.8) 0%, rgba(139, 202, 253, 0) 100%), linear-gradient(0deg, rgb(0, 75, 176), rgb(0, 75, 176))",
+                borderRadius: "10px",
+                zIndex: 0,
+              }}
+            ></span>
+            <div style={{ overflow: "hidden", width: "100%", height: "100%", pointerEvents: "none", position: "absolute", zIndex: 1, left: 0, top: 0 }}>
+              <i style={{ bottom: "-10px", position: "absolute", animation: "2.35s ease-in-out 0.2s infinite normal none running floating-points", width: "2px", height: "2px", backgroundColor: "rgb(255, 255, 255)", borderRadius: "9999px", left: "10%" }}></i>
+              <i style={{ bottom: "-10px", position: "absolute", animation: "2.5s ease-in-out 0.5s infinite normal none running floating-points", width: "2px", height: "2px", backgroundColor: "rgb(255, 255, 255)", borderRadius: "9999px", left: "30%", opacity: 0.7 }}></i>
+              <i style={{ bottom: "-10px", position: "absolute", animation: "2.2s ease-in-out 0.1s infinite normal none running floating-points", width: "2px", height: "2px", backgroundColor: "rgb(255, 255, 255)", borderRadius: "9999px", left: "25%", opacity: 0.8 }}></i>
+              <i style={{ bottom: "-10px", position: "absolute", animation: "2.05s ease-in-out 0s infinite normal none running floating-points", width: "2px", height: "2px", backgroundColor: "rgb(255, 255, 255)", borderRadius: "9999px", left: "44%", opacity: 0.6 }}></i>
+              <i style={{ bottom: "-10px", position: "absolute", animation: "1.9s ease-in-out 0s infinite normal none running floating-points", width: "2px", height: "2px", backgroundColor: "rgb(255, 255, 255)", borderRadius: "9999px", left: "50%" }}></i>
+              <i style={{ bottom: "-10px", position: "absolute", animation: "1.5s ease-in-out 1.5s infinite normal none running floating-points", width: "2px", height: "2px", backgroundColor: "rgb(255, 255, 255)", borderRadius: "9999px", left: "75%", opacity: 0.5 }}></i>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Cross-fading labels */}
+      <AnimatePresence mode="popLayout" initial={false}>
+        {!clicked ? (
+          <motion.span
+            key="label"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="flex items-center gap-1.5 z-10 whitespace-nowrap"
+          >
+            {serviceTitle} Projesi Konuşalım
+            <ArrowRight className="w-3.5 h-3.5" />
+          </motion.span>
+        ) : (
+          <motion.span
+            key="email"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="flex items-center gap-1.5 text-white font-bold tracking-normal normal-case z-10 font-dm-sans whitespace-nowrap"
+          >
+            <Mail className="w-3.5 h-3.5 text-white animate-pulse" />
+            iletisim@softrika.com
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </motion.button>
+  );
+}
 
 const services = [
   {
@@ -196,6 +312,7 @@ export default function ServicesAccordion() {
                               </div>
                             ))}
                           </div>
+                          <ServiceContactButton serviceTitle={service.title} />
                         </div>
                       </motion.div>
                     )}

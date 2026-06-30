@@ -1,8 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MessageSquare } from "lucide-react";
 
 export default function Hero() {
+  const handleContactScroll = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (window.innerWidth > 768) {
+      window.scrollTo({ top: 3187, behavior: "smooth" });
+    } else {
+      const element = document.getElementById("services-accordion");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <main className="bg-center min-h-[calc(100vh-80px)] flex items-center w-full max-w-none mx-auto pt-0 px-6 relative">
       <div className="absolute top-0 right-0 bottom-0 left-0" data-container-bg="true"></div>
@@ -91,7 +105,8 @@ export default function Hero() {
             </div>
             
             <Link
-              href="#"
+              href="#contact"
+              onClick={handleContactScroll}
               className="inline-flex items-center justify-center gap-2 transition-none group text-base font-light tracking-tight font-dm-sans border rounded-xl pt-3 pr-6 pb-3 pl-6 text-slate-50 bg-white/5 border-white/20"
               style={{ minHeight: "48px", borderRadius: "0.75rem" }}
             >
