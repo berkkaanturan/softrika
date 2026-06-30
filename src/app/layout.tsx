@@ -8,8 +8,11 @@ const instrumentSerif = Instrument_Serif({ subsets: ["latin"], weight: ["400"], 
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage" });
 
 export const metadata: Metadata = {
-  title: "Softrika - İşinizi Geleceğe Taşıyan Yazılım Çözümleri",
+  title: "Softrika",
   description: "Softrika olarak, şirketinize özel web, mobil ve bulut tabanlı yazılımlar geliştiriyoruz.",
+  icons: {
+    icon: "/image-cropped.svg",
+  },
 };
 
 export default function RootLayout({
