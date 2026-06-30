@@ -208,7 +208,7 @@ export default function ServicesAccordion() {
 
       <div className="max-w-[72rem] mx-auto relative">
         <h3 className="text-3xl md:text-4xl text-center mb-12 tracking-tight text-gray-900 font-novecento-wide-bold">
-          Sizlere nasıl destek olabiliriz?
+          Size nasıl destek olabiliriz?
         </h3>
 
         <div 
