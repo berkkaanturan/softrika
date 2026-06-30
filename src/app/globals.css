@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-instrument-serif: "Instrument Serif", serif;
+  --font-bricolage: "Bricolage Grotesque", sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-inter);
+  }
+}
+
+@layer utilities {
+  .font-novecento-wide-bold {
+    font-family: 'Novecento Sans Wide Bold', sans-serif;
+    font-weight: 700;
+  }
+  
+  .font-dm-sans { font-family: var(--font-dm-sans) !important; }
+  .font-instrument-serif { font-family: var(--font-instrument-serif) !important; }
+  .font-bricolage { font-family: var(--font-bricolage) !important; }
+
+  .perspective-none { perspective: none !important; }
+  .perspective-dramatic { perspective: 100px !important; }
+  .perspective-near { perspective: 300px !important; }
+  .perspective-normal { perspective: 500px !important; }
+  .perspective-midrange { perspective: 800px !important; }
+  .perspective-distant { perspective: 1200px !important; }
+  
+  .transform-style-preserve-3d { transform-style: preserve-3d !important; }
+  .transform-style-flat { transform-style: flat !important; }
+  
+  /* Custom scrollbar to match premium feel */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background-color: #e5e7eb; border-radius: 20px; }
+
+  @keyframes floating-points {
+    0% { transform: translateY(0); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-40px); opacity: 0; }
+  }
+
+  @keyframes waveGlow1 {
+    0%, 100% { stop-color: #004BB0; }
+    50% { stop-color: #8BCAFD; }
+  }
+  @keyframes waveGlow2 {
+    0%, 100% { stop-color: #8BCAFD; }
+    50% { stop-color: #002D6E; }
+  }
+  @keyframes waveGlow3 {
+    0%, 100% { stop-color: #002D6E; }
+    50% { stop-color: #004BB0; }
+  }
+  .wave-stop-1 { animation: waveGlow1 8s ease-in-out infinite; }
+  .wave-stop-2 { animation: waveGlow2 8s ease-in-out infinite; }
+  .wave-stop-3 { animation: waveGlow3 8s ease-in-out infinite; }
+}
